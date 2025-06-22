@@ -44,7 +44,7 @@ const PostList = () => {
   return (
     <Box sx={{ p: { xs: 2, md: 4 } }} >
       <Box
-        className="responsive"
+        className="responsive padding-handle"
         sx={{
           display: 'flex',
           justifyContent: 'space-between',

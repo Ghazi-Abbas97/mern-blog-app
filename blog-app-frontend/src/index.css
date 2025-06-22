@@ -13,6 +13,32 @@ code {
 }
 
 
+
+@media(max-width:1000px) {
+  .card-handler {
+    flex: 0 0 45% !important;
+  }
+}
+
+@media(max-width:900px) {
+  .padding-handle {
+    padding: 10px;
+  }
+}
+
+
+@media(max-width:700px) {
+  .card-handler {
+    flex: 0 0 100% !important;
+  }
+}
+
+@media(max-width:600px) {
+  .alignment-handle {
+    min-height: calc(100vh - 48px)
+  }
+}
+
 @media(max-width:575px) {
   .responsive h4 {
     font-size: 26px;
@@ -21,17 +47,5 @@ code {
 
   .responsive .btn-add-new {
     font-size: 12px;
-  }
-}
-
-@media(max-width:1000px) {
-  .card-handler {
-    flex: 0 0 45% !important;
-  }
-}
-
-@media(max-width:700px) {
-  .card-handler {
-    flex: 0 0 100% !important;
   }
 }

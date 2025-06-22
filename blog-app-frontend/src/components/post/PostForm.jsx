@@ -183,12 +183,13 @@ const PostForm = () => {
           />
 
           {id && imageURL && (
-            <Box mt={2}>
+            <>
               <Typography fontSize={14}>Current Image</Typography>
-              <Link to={imageURL} target="_blank" rel="noopener noreferrer">
+              <Link to={imageURL} target="_blank" rel="noopener noreferrer" style={{ wordWrap: "break-word" }}>
                 {imageURL}
               </Link>
-            </Box>
+            </>
+
           )}
 
           <Button

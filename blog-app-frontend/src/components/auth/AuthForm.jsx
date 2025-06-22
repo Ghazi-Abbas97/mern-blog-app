@@ -67,6 +67,7 @@ const AuthForm = ({ type = 'login' }) => {
         justifyContent: 'center',
         minHeight: 'calc(100vh - 64px)',   // fill full viewport height
       }}
+        className='responsive alignment-handle'
     >
       <Paper elevation={6} sx={{ p: 4, borderRadius: 4, width: '100%' }}>
         <Typography variant="h4" align="center" gutterBottom>
