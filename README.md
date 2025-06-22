@@ -30,6 +30,7 @@ Make sure the following tools are installed:
 - 🚀 Axios Interceptors for Token Management
 - 📱 Fully Responsive UI (Material UI)
 - 📘 Postman Documentation Ready
+- 🧩 Middlware to verify tokens
 
 ---
 
