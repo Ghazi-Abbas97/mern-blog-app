@@ -1,4 +1,6 @@
 const Post = require('../../models/post');
+const cloudinary = require('../../utils/cloudinary');
+const fs = require('fs'); // to delete the local temp file if you want
 
 // ==============================
 // CREATE POST
@@ -13,11 +15,21 @@ const createPost = async (req, res) => {
       return res.status(400).json({ message: 'Title and content are required' });
     }
 
-    // Prepare image URL if file was uploaded
+    // Prepare new image URL if file is uploaded
     let imageUrl = '';
     if (req.file) {
-      imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+      // 1. Upload the file from its temporary path
+      const result = await cloudinary.uploader.upload(req.file.path);
+
+      // 2. Grab the secure URL from Cloudinary
+      imageUrl = result.secure_url;
+
+      // 3. (Optional) delete the file from your server’s /uploads folder
+      fs.unlinkSync(req.file.path);
     }
+
+    // Optional: attach image URL to request (not used directly here)
+    req.image = imageUrl;
 
     // Create post object
     const postData = {
@@ -98,10 +110,19 @@ const updatePost = async (req, res) => {
     const post = await Post.findById(req.params.id);
     if (!post) return res.status(404).json({ message: 'Post not found' });
 
+
+
     // Prepare new image URL if file is uploaded
     let imageUrl = '';
     if (req.file) {
-      imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+      // 1. Upload the file from its temporary path
+      const result = await cloudinary.uploader.upload(req.file.path);
+
+      // 2. Grab the secure URL from Cloudinary
+      imageUrl = result.secure_url;
+
+      // 3. (Optional) delete the file from your server’s /uploads folder
+      fs.unlinkSync(req.file.path);
     }
 
     // Optional: attach image URL to request (not used directly here)
