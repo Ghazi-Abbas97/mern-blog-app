@@ -39,9 +39,9 @@ const AuthForm = ({ type = 'login' }) => {
         console.log(res.data)
         const { session, user } = res.data;
         login(session, user);
-    
-          navigate('/dashboard');
-        
+
+        navigate('/dashboard');
+
       })
         .catch((error) => {
           console.log(error)
@@ -72,7 +72,6 @@ const AuthForm = ({ type = 'login' }) => {
               name="fullName"
               fullWidth
               margin="normal"
-              required
               value={formik.values.fullName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -86,6 +85,8 @@ const AuthForm = ({ type = 'login' }) => {
             margin="normal"
             required
             type="email"
+            error={formik.touched.emailAddress && Boolean(formik.errors.emailAddress)}
+            helperText={formik.touched.emailAddress && formik.errors.emailAddress}
             value={formik.values.emailAddress}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -101,6 +102,8 @@ const AuthForm = ({ type = 'login' }) => {
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+               error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
           />
 
           <Button

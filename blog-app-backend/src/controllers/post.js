@@ -15,7 +15,7 @@ const createPost = async (req, res) => {
       return res.status(400).json({ message: 'Title and content are required' });
     }
 
-    // Prepare new image URL if file is uploaded
+    // Prepare image URL if file was uploaded
     let imageUrl = '';
     if (req.file) {
       // 1. Upload the file from its temporary path
@@ -27,9 +27,6 @@ const createPost = async (req, res) => {
       // 3. (Optional) delete the file from your server’s /uploads folder
       fs.unlinkSync(req.file.path);
     }
-
-    // Optional: attach image URL to request (not used directly here)
-    req.image = imageUrl;
 
     // Create post object
     const postData = {
@@ -104,15 +101,11 @@ const getPostById = async (req, res) => {
 // UPDATE POST
 // ==============================
 const updatePost = async (req, res) => {
-  const { title, content } = req.body;
-
   try {
     const post = await Post.findById(req.params.id);
     if (!post) return res.status(404).json({ message: 'Post not found' });
 
-
-
-    // Prepare new image URL if file is uploaded
+    // Prepare image URL if file was uploaded
     let imageUrl = '';
     if (req.file) {
       // 1. Upload the file from its temporary path
@@ -126,7 +119,7 @@ const updatePost = async (req, res) => {
     }
 
     // Optional: attach image URL to request (not used directly here)
-    req.image = imageUrl;
+    req.body.image = imageUrl;
 
     // Update post in DB
     const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body, { new: true });

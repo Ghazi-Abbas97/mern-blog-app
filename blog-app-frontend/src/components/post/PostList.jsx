@@ -11,7 +11,7 @@ import {
   CardMedia,
   Chip,
   Stack,
-  Pagination, // ← Import added
+  Pagination, 
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import useAxios from '../api/Axios';
@@ -73,7 +73,7 @@ const PostList = () => {
             sx={{
               display: 'flex',
               flexWrap: 'wrap',
-              justifyContent: 'space-between',
+              // justifyContent: 'space-evenly',
               gap: 2,
             }}
             
