@@ -7,7 +7,8 @@ const useAxios = () => {
 
   const instance = useMemo(() => {
     const api = axios.create({
-      baseURL: 'http://localhost:27017/api', 
+      // baseURL: 'http://localhost:27017/api', 
+      baseURL: 'https://mern-blog-app-production-1e09.up.railway.app/api',
     });
 
     // REQUEST INTERCEPTOR
