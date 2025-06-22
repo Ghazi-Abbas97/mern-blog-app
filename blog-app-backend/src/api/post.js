@@ -6,7 +6,7 @@ const {
   updatePost,
   deletePost
 } = require('../controllers/post');
-const verifyToken = require("../middleware/authMiddleWare");
+const verifyToken = require("../middleware/authMiddleware");
 const upload = require('../middleware/uploadMiddleware');
 
 // Route to create a new post (protected, with image upload)
