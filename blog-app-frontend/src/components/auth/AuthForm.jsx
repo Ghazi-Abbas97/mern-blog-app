@@ -59,8 +59,16 @@ const AuthForm = ({ type = 'login' }) => {
 
 
   return (
-    <Container maxWidth="sm">
-      <Paper elevation={6} sx={{ p: 4, mt: 8, borderRadius: 4 }}>
+    <Container
+      maxWidth="sm"
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: 'calc(100vh - 64px)',   // fill full viewport height
+      }}
+    >
+      <Paper elevation={6} sx={{ p: 4, borderRadius: 4, width: '100%' }}>
         <Typography variant="h4" align="center" gutterBottom>
           {isLogin ? 'Login to your account' : 'Create a new account'}
         </Typography>
@@ -102,7 +110,7 @@ const AuthForm = ({ type = 'login' }) => {
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-               error={formik.touched.password && Boolean(formik.errors.password)}
+            error={formik.touched.password && Boolean(formik.errors.password)}
             helperText={formik.touched.password && formik.errors.password}
           />
 
@@ -115,8 +123,8 @@ const AuthForm = ({ type = 'login' }) => {
           >
             {isLogin ? 'Login' : 'Sign Up'}
           </Button>
-
         </Box>
+
         <Grid container justifyContent="flex-end" sx={{ mt: 2 }}>
           <Grid item>
             <Link
@@ -131,7 +139,8 @@ const AuthForm = ({ type = 'login' }) => {
           </Grid>
         </Grid>
       </Paper>
-      {isLoader ? <Loader /> : ''}
+
+      {isLoader && <Loader />}
     </Container>
   );
 };
