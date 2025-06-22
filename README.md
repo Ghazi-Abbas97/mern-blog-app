@@ -29,7 +29,7 @@ Make sure the following tools are installed:
 - 🧠 Global Auth State with React Context API
 - 🚀 Axios Interceptors for Token Management
 - 📱 Fully Responsive UI (Material UI)
-- 📘 Postman / Swagger API Documentation Ready
+- 📘 Postman Documentation Ready
 
 ---
 
