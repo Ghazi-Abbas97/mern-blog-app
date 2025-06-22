@@ -51,7 +51,7 @@ const PostDetail = () => {
   };
 
 
-  if (!post) return <Typography>No post found</Typography>;
+  if (!post) return <Loader />;
 
   return (
     <Box sx={{ maxWidth: '800px', mx: 'auto', mt: 4, mb: 4, p: 2 }}>

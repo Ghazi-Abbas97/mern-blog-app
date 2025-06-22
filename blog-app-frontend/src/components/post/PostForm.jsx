@@ -20,6 +20,7 @@ import { useAuth } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 import Loader from '../loader/Loader';
 
+
 const PostForm = () => {
   const api = useAxios();
   const navigate = useNavigate();
@@ -56,7 +57,9 @@ const PostForm = () => {
         formData.append('content', values.content);
         formData.append('metaDesc', values.metaDesc);
         formData.append('category', values.category);
+
         formData.append('createdBy', user?._id ? user?._id : savedUser._id);
+
         if (imageFile) {
           formData.append('image', imageFile);
         }
@@ -73,8 +76,13 @@ const PostForm = () => {
         callApi
           .then((res) => {
             setLoading(false)
-            setSnackOpen(true);
-            setDialogOpen(true);
+            if (id) {
+              navigate("/")
+            } else {
+
+              setSnackOpen(true);
+              setDialogOpen(true);
+            }
             console.log(res);
           })
           .catch((error) => {
